@@ -102,3 +102,56 @@ const data = [
   */
   
 
+
+    1// 
+    function articleMaker(title,date,content) {
+      
+     // Step 1: Create Elements 
+
+    const article=document.createElement('div')
+    const articletitle=document.createElement('h2')
+    const articleDate=document.createElement('p')
+    const articlecontent=document.createElement('p')
+    const expandButton=document.createElement('span')
+
+    //setp2 Connect Elements using appendChild
+
+    article.appendChild(articletitle)
+    article.appendChild(articleDate)
+    article.appendChild(articlecontent)
+    article.appendChild(expandButton)
+
+    //step3 add content
+
+    const expand = "\u25bc" 
+
+    articletitle.textContent = title
+    articleDate.textContent = date
+    articlecontent.textContent = content
+    expandButton.textContent = expand
+
+ //step4 add css using classList.add
+    article.classList.add("article")
+    articleDate.classList.add("date")
+    expandButton.classList.add("expandButton")
+
+    //step5 add functionality click to open
+    
+    expandButton.addEventListener("click", (event)=>{
+      article.classList.toggle("article-open")
+    })
+
+
+    return article
+
+        }
+
+    const articles  = document.querySelector(".articles" )
+
+    data.map(function(item) {
+     articles.appendChild(articleMaker(item.title, item.date, item.content))
+
+    })
+
+   
+   
